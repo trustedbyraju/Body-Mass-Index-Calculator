@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       Body Mass Index (BMI) Calculator Online 2026
+       Single-page SEO-optimized tool website
+       Stack: HTML5 + CSS3 + Vanilla JS | No external dependencies
+  ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Body Mass Index (BMI) Calculator Online 2026</title>
+  <meta name="description" content="Free Body Mass Index (BMI) Calculator Online 2026. Instantly calculate your BMI using metric or imperial units. Get your BMI score, category (Underweight, Normal, Overweight, Obese) and personalized health insights." />
+  <meta name="keywords" content="BMI calculator, body mass index calculator, BMI calculator online 2026, free BMI tool, healthy weight calculator" />
+  <meta name="author" content="BMI Calculator Online" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Body Mass Index (BMI) Calculator Online 2026" />
+  <meta property="og:description" content="Calculate your BMI instantly. Free, accurate, mobile-friendly BMI tool with metric & imperial support." />
+  <meta property="og:url" content="https://yourdomain.com/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Body Mass Index (BMI) Calculator Online 2026" />
+  <meta name="twitter:description" content="Free online BMI calculator with instant results, categories, and health insights." />
+
+  <!-- ============================================================
+       JSON-LD Structured Data
+  ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BMI Calculator Online 2026",
+    "url": "https://yourdomain.com/",
+    "description": "Free Body Mass Index (BMI) Calculator Online 2026. Calculate BMI instantly with metric or imperial units.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://yourdomain.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Body Mass Index (BMI) Calculator Online 2026",
+    "description": "Learn how to calculate your Body Mass Index (BMI) online in 2026 using our free, accurate BMI calculator. Understand BMI categories, formulas, and health implications.",
+    "datePublished": "2026-01-01",
+    "dateModified": "2026-04-18",
+    "author": {
+      "@type": "Organization",
+      "name": "BMI Calculator Online"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BMI Calculator Online"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://yourdomain.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a normal BMI range?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A normal BMI range is between 18.5 and 24.9. Values below 18.5 are considered underweight, values between 25.0 and 29.9 are overweight, and values of 30 or above are classified as obese."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is BMI calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BMI is calculated using the formula: BMI = weight (kg) ÷ height² (m²). In imperial units: BMI = (weight in lbs × 703) ÷ height² (inches²)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is BMI accurate for everyone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BMI is a useful screening tool but it does not directly measure body fat. It may not accurately reflect health for athletes (who have high muscle mass), elderly individuals, pregnant women, or people of certain ethnic backgrounds. Always consult a healthcare professional for a comprehensive health assessment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What BMI is considered obese?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A BMI of 30 or higher is classified as obese. Obesity is further divided into three classes: Class I (30–34.9), Class II (35–39.9), and Class III or morbid obesity (40 and above)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this BMI calculator for children?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This BMI calculator is designed for adults aged 18 and older. For children and teenagers, BMI is interpreted differently using age- and sex-specific percentiles. Please consult a pediatrician for BMI assessment in children."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I check my BMI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most adults, checking BMI once every few months is sufficient. If you are actively managing weight through diet or exercise, monthly tracking can help you monitor progress. Always combine BMI tracking with other health indicators for a complete picture."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ============================================================
+       STYLES
+  ============================================================ -->
+  <style>
+    /* === DESIGN TOKENS === */
+    :root {
+      --clr-bg:       #f0f4f8;
+      --clr-surface:  #ffffff;
+      --clr-primary:  #1a7f5a;
+      --clr-primary-dark: #125e42;
+      --clr-accent:   #25c988;
+      --clr-text:     #1c2b2b;
+      --clr-muted:    #6b7f7f;
+      --clr-border:   #d8e4e4;
+
+      /* BMI category colors */
+      --clr-under:    #3b9edd;
+      --clr-normal:   #27ae60;
+      --clr-over:     #f39c12;
+      --clr-obese:    #e74c3c;
+
+      --radius-sm:    8px;
+      --radius-md:    16px;
+      --radius-lg:    24px;
+      --shadow-sm:    0 2px 8px rgba(0,0,0,.06);
+      --shadow-md:    0 8px 32px rgba(0,0,0,.10);
+      --shadow-lg:    0 20px 60px rgba(0,0,0,.13);
+      --transition:   .25s ease;
+      --max-w:        1100px;
+
+      --ff-display:   'DM Serif Display', 'Georgia', serif;
+      --ff-body:      'DM Sans', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* === GOOGLE FONTS === */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--clr-primary); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--clr-primary-dark); }
+    ul { list-style: none; }
+
+    /* === LAYOUT HELPERS === */
+    .container { max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
+    .section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+    .section--alt { background: var(--clr-surface); }
+
+    /* === SKIP LINK (accessibility) === */
+    .skip-link {
+      position: absolute; top: -999px; left: 1rem;
+      background: var(--clr-primary); color: #fff;
+      padding: .5rem 1rem; border-radius: var(--radius-sm);
+      font-weight: 600; z-index: 9999;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ======================================================
+       HEADER
+    ====================================================== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--clr-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: .6rem;
+      font-family: var(--ff-display); font-size: 1.35rem;
+      color: var(--clr-primary); font-weight: 400;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--clr-primary);
+      border-radius: 10px;
+      display: grid; place-items: center;
+    }
+    .logo-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+    .site-nav { display: flex; gap: 1.5rem; align-items: center; }
+    .site-nav a {
+      font-size: .9rem; font-weight: 500; color: var(--clr-muted);
+      padding: .3rem .1rem;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .site-nav a:hover { color: var(--clr-primary); border-bottom-color: var(--clr-accent); }
+
+    .nav-toggle {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: .4rem; border-radius: var(--radius-sm);
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--clr-text); margin: 4px 0;
+      border-radius: 2px; transition: transform var(--transition), opacity var(--transition);
+    }
+
+    /* ======================================================
+       HERO
+    ====================================================== */
+    .hero {
+      background: linear-gradient(135deg, #0d5c40 0%, #1a7f5a 50%, #25a572 100%);
+      color: #fff;
+      padding-block: clamp(3.5rem, 9vw, 6rem);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase; padding: .35rem .85rem;
+      border-radius: 999px; margin-bottom: 1.25rem;
+    }
+    .hero-badge::before { content: '●'; color: var(--clr-accent); font-size: .55rem; }
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 5.5vw, 3.25rem);
+      line-height: 1.15; font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--clr-accent); }
+    .hero-desc { font-size: 1.05rem; opacity: .88; max-width: 520px; margin-bottom: 2rem; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: #fff; color: var(--clr-primary);
+      font-weight: 700; font-size: .95rem;
+      padding: .85rem 2rem; border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); color: var(--clr-primary-dark); }
+    .hero-cta svg { width: 18px; height: 18px; }
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-stat strong { display: block; font-size: 1.6rem; font-weight: 700; color: var(--clr-accent); }
+    .hero-stat span { font-size: .82rem; opacity: .75; text-transform: uppercase; letter-spacing: .05em; }
+
+    /* ======================================================
+       CALCULATOR CARD
+    ====================================================== */
+    .calc-section { padding-block: clamp(3rem, 7vw, 5rem); }
+    .calc-wrapper {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      align-items: start;
+    }
+    .calc-card {
+      background: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid var(--clr-border);
+      position: relative; overflow: hidden;
+      animation: slideUp .5s ease both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .calc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent));
+    }
+
+    .calc-title {
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 1.5rem; color: var(--clr-text);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .calc-title svg { width: 20px; height: 20px; color: var(--clr-primary); }
+
+    /* Unit toggle */
+    .unit-toggle {
+      display: flex; gap: .5rem;
+      background: var(--clr-bg); border-radius: 999px;
+      padding: .3rem; margin-bottom: 1.75rem;
+    }
+    .unit-btn {
+      flex: 1; padding: .5rem 1rem;
+      border: none; border-radius: 999px; cursor: pointer;
+      font-family: var(--ff-body); font-size: .875rem; font-weight: 600;
+      background: transparent; color: var(--clr-muted);
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+    }
+    .unit-btn.active {
+      background: var(--clr-surface); color: var(--clr-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Form fields */
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
+      display: block; font-size: .85rem; font-weight: 600;
+      color: var(--clr-muted); margin-bottom: .45rem;
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .input-row { display: flex; gap: .75rem; }
+    .input-wrapper { position: relative; flex: 1; }
+    .input-wrapper input {
+      width: 100%; padding: .85rem 1rem .85rem 1rem;
+      border: 2px solid var(--clr-border); border-radius: var(--radius-md);
+      font-family: var(--ff-body); font-size: 1rem;
+      color: var(--clr-text); background: var(--clr-bg);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    .input-wrapper input::-webkit-outer-spin-button,
+    .input-wrapper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .input-wrapper input:focus {
+      outline: none; border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px rgba(26,127,90,.12);
+      background: #fff;
+    }
+    .input-wrapper input.error { border-color: var(--clr-obese); }
+    .input-unit {
+      position: absolute; right: .85rem; top: 50%; transform: translateY(-50%);
+      font-size: .8rem; font-weight: 600; color: var(--clr-muted);
+      pointer-events: none;
+    }
+    .field-error {
+      font-size: .78rem; color: var(--clr-obese);
+      margin-top: .3rem; display: none;
+    }
+    .field-error.visible { display: block; }
+
+    /* Calculate button */
+    .calc-btn {
+      width: 100%; padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
+      color: #fff; border: none; border-radius: var(--radius-md);
+      font-family: var(--ff-body); font-size: 1.05rem; font-weight: 700;
+      cursor: pointer; margin-top: .5rem;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      box-shadow: 0 4px 16px rgba(26,127,90,.3);
+      letter-spacing: .02em;
+    }
+    .calc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,127,90,.4); }
+    .calc-btn:active { transform: translateY(0); }
+    .reset-btn {
+      width: 100%; padding: .65rem 1rem;
+      background: transparent; color: var(--clr-muted);
+      border: 1.5px solid var(--clr-border); border-radius: var(--radius-md);
+      font-family: var(--ff-body); font-size: .875rem; font-weight: 500;
+      cursor: pointer; margin-top: .6rem;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .reset-btn:hover { color: var(--clr-primary); border-color: var(--clr-primary); background: rgba(26,127,90,.04); }
+
+    /* === RESULT PANEL === */
+    .result-panel {
+      background: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid var(--clr-border);
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 380px;
+      animation: slideUp .5s .1s ease both;
+    }
+    .result-placeholder {
+      text-align: center; color: var(--clr-muted);
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    .result-placeholder svg { width: 64px; height: 64px; opacity: .3; }
+    .result-placeholder p { font-size: .95rem; line-height: 1.6; max-width: 220px; }
+
+    .result-display { display: none; }
+    .result-display.visible { display: block; }
+    .result-placeholder.hidden { display: none; }
+
+    .bmi-score-wrap { text-align: center; margin-bottom: 2rem; }
+    .bmi-number {
+      font-family: var(--ff-display); font-size: 5rem;
+      line-height: 1; font-weight: 400;
+      transition: color .4s ease;
+    }
+    .bmi-label {
+      display: inline-block; margin-top: .5rem;
+      padding: .35rem 1.25rem; border-radius: 999px;
+      font-size: .9rem; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase; color: #fff;
+      transition: background .4s ease;
+    }
+
+    /* BMI gauge / progress bar */
+    .bmi-gauge { margin-bottom: 1.75rem; }
+    .gauge-track {
+      height: 10px; border-radius: 999px;
+      background: linear-gradient(90deg, var(--clr-under) 0%, var(--clr-normal) 30%, var(--clr-over) 62%, var(--clr-obese) 100%);
+      position: relative; overflow: visible;
+    }
+    .gauge-needle {
+      position: absolute; top: 50%; width: 16px; height: 16px;
+      background: #fff; border: 3px solid var(--clr-text);
+      border-radius: 50%; transform: translate(-50%, -50%);
+      transition: left .6s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+    .gauge-labels {
+      display: flex; justify-content: space-between;
+      font-size: .72rem; color: var(--clr-muted); margin-top: .45rem;
+      font-weight: 600;
+    }
+
+    /* Result details */
+    .result-details { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .result-chip {
+      background: var(--clr-bg); border-radius: var(--radius-sm);
+      padding: .75rem 1rem;
+    }
+    .result-chip .chip-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--clr-muted); font-weight: 600; }
+    .result-chip .chip-val { font-size: 1rem; font-weight: 700; color: var(--clr-text); margin-top: .2rem; }
+
+    /* ======================================================
+       WHAT IS BMI
+    ====================================================== */
+    .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .what-text h2 { font-family: var(--ff-display); font-size: clamp(1.6rem, 3.5vw, 2.25rem); font-weight: 400; margin-bottom: 1rem; }
+    .what-text p { color: var(--clr-muted); margin-bottom: 1rem; }
+
+    .formula-box {
+      background: var(--clr-bg); border-left: 4px solid var(--clr-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+    }
+    .formula-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: .75rem; }
+    .formula {
+      font-family: 'Courier New', monospace;
+      font-size: .95rem; color: var(--clr-primary);
+      font-weight: 700; background: rgba(26,127,90,.06);
+      padding: .5rem .85rem; border-radius: var(--radius-sm);
+      display: inline-block; margin-bottom: .5rem;
+    }
+    .formula-note { font-size: .82rem; color: var(--clr-muted); }
+
+    .what-visual {
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
+      border-radius: var(--radius-lg);
+      padding: 2.5rem; color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .what-visual h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; opacity: .85; }
+    .mini-stat { margin-bottom: 1.25rem; }
+    .mini-stat strong { display: block; font-size: 1.8rem; font-weight: 700; }
+    .mini-stat span { font-size: .82rem; opacity: .8; }
+
+    /* ======================================================
+       BMI TABLE
+    ====================================================== */
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 { font-family: var(--ff-display); font-size: clamp(1.6rem, 3.5vw, 2.25rem); font-weight: 400; }
+    .section-header p { color: var(--clr-muted); margin-top: .5rem; max-width: 520px; margin-inline: auto; }
+
+    .table-wrapper { overflow-x: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+    table {
+      width: 100%; border-collapse: collapse;
+      background: var(--clr-surface); font-size: .95rem;
+    }
+    thead tr { background: var(--clr-primary); color: #fff; }
+    th { padding: 1rem 1.25rem; text-align: left; font-size: .85rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    td { padding: .9rem 1.25rem; border-bottom: 1px solid var(--clr-border); }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--clr-bg); }
+    .cat-badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-weight: 600; font-size: .875rem;
+    }
+    .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ======================================================
+       BENEFITS
+    ====================================================== */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .benefit-card {
+      background: var(--clr-surface); border-radius: var(--radius-md);
+      padding: 1.75rem; border: 1px solid var(--clr-border);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .benefit-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: rgba(26,127,90,.1); display: grid; place-items: center;
+      margin-bottom: 1rem;
+    }
+    .benefit-icon svg { width: 24px; height: 24px; color: var(--clr-primary); }
+    .benefit-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .benefit-card p { font-size: .875rem; color: var(--clr-muted); line-height: 1.6; }
+
+    /* ======================================================
+       FAQs
+    ====================================================== */
+    .faq-list { max-width: 760px; margin-inline: auto; }
+    .faq-item {
+      border: 1px solid var(--clr-border); border-radius: var(--radius-md);
+      margin-bottom: .75rem; overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .faq-item:hover { box-shadow: var(--shadow-sm); }
+    .faq-q {
+      width: 100%; text-align: left; background: var(--clr-surface);
+      border: none; padding: 1.1rem 1.5rem;
+      font-family: var(--ff-body); font-size: 1rem; font-weight: 600;
+      color: var(--clr-text); cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      transition: background var(--transition);
+    }
+    .faq-q:hover { background: var(--clr-bg); }
+    .faq-q[aria-expanded="true"] { background: rgba(26,127,90,.05); color: var(--clr-primary); }
+    .faq-chevron {
+      width: 20px; height: 20px; flex-shrink: 0;
+      transition: transform var(--transition);
+      color: var(--clr-muted);
+    }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--clr-primary); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      background: var(--clr-surface);
+    }
+    .faq-a.open { max-height: 300px; }
+    .faq-a-inner { padding: 0 1.5rem 1.25rem; color: var(--clr-muted); font-size: .925rem; line-height: 1.7; }
+
+    /* ======================================================
+       FOOTER
+    ====================================================== */
+    .site-footer {
+      background: #0d1f1a; color: rgba(255,255,255,.7);
+      padding-block: 3rem;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand .logo { color: #fff; margin-bottom: 1rem; }
+    .footer-brand p { font-size: .875rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 {
+      font-size: .8rem; text-transform: uppercase; letter-spacing: .06em;
+      font-weight: 700; color: rgba(255,255,255,.4); margin-bottom: 1rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: .55rem; }
+    .footer-col li a { font-size: .875rem; color: rgba(255,255,255,.65); transition: color var(--transition); }
+    .footer-col li a:hover { color: var(--clr-accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 2.5rem; padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem; color: rgba(255,255,255,.35);
+      flex-wrap: wrap; gap: .75rem;
+    }
+    .footer-bottom a { color: rgba(255,255,255,.45); }
+    .footer-bottom a:hover { color: var(--clr-accent); }
+
+    /* ======================================================
+       RESPONSIVE
+    ====================================================== */
+    @media (max-width: 900px) {
+      .calc-wrapper { grid-template-columns: 1fr; }
+      .what-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--clr-border); padding: 1rem 1.5rem; box-shadow: var(--shadow-md); gap: .5rem; }
+      .site-nav.open { display: flex; }
+      .site-nav a { font-size: .95rem; padding: .6rem 0; border-bottom: 1px solid var(--clr-border); }
+      .site-nav a:last-child { border-bottom: none; }
+      .nav-toggle { display: block; }
+      .hero-stats { gap: 1.25rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .result-details { grid-template-columns: 1fr; }
+    }
+
+    /* Utility */
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+  </style>
+</head>
+
+<body>
+  <a href="#calculator" class="skip-link">Skip to calculator</a>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo" aria-label="BMI Calculator Home">
+          <div class="logo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          BMI<span style="color:var(--clr-accent)">Calc</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation" id="siteNav" role="navigation">
+          <a href="#calculator">Calculator</a>
+          <a href="#what-is-bmi">What is BMI?</a>
+          <a href="#bmi-table">BMI Table</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">Free Online Tool · 2026</div>
+          <h1 id="hero-heading">
+            Body Mass Index<br>
+            <em>(BMI) Calculator</em><br>
+            Online 2026
+          </h1>
+          <p class="hero-desc">
+            Instantly calculate your BMI using the standard WHO formula. Supports both
+            metric and imperial units — no sign-up required.
+          </p>
+          <a href="#calculator" class="hero-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Calculate My BMI
+          </a>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>100%</strong><span>Free</span></div>
+            <div class="hero-stat"><strong>WHO</strong><span>Standard Formula</span></div>
+            <div class="hero-stat"><strong>Instant</strong><span>Results</span></div>
+            <div class="hero-stat"><strong>Metric &amp; Imperial</strong><span>Units Supported</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BMI CALCULATOR
+    ============================================================ -->
+    <section class="calc-section section" id="calculator" aria-labelledby="calc-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="calc-heading">BMI Calculator Tool</h2>
+          <p>Enter your height and weight below to get your BMI score and category instantly.</p>
+        </div>
+
+        <div class="calc-wrapper">
+          <!-- Input Card -->
+          <div class="calc-card" role="form" aria-label="BMI Calculator">
+            <div class="calc-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+              Enter Your Measurements
+            </div>
+
+            <!-- Unit toggle -->
+            <div class="unit-toggle" role="group" aria-label="Unit system">
+              <button class="unit-btn active" id="metricBtn" aria-pressed="true" onclick="setUnit('metric')">Metric (cm / kg)</button>
+              <button class="unit-btn" id="imperialBtn" aria-pressed="false" onclick="setUnit('imperial')">Imperial (ft / lbs)</button>
+            </div>
+
+            <!-- Height -->
+            <div class="form-group" id="heightGroup">
+              <label class="form-label" for="heightCm">Height</label>
+              <div class="input-row" id="metricHeightRow">
+                <div class="input-wrapper">
+                  <input type="number" id="heightCm" name="heightCm" placeholder="e.g. 175" min="50" max="250" step="0.1" aria-label="Height in centimetres" aria-describedby="heightCmError" inputmode="decimal" />
+                  <span class="input-unit" aria-hidden="true">cm</span>
+                </div>
+              </div>
+              <div class="input-row" id="imperialHeightRow" style="display:none;">
+                <div class="input-wrapper">
+                  <input type="number" id="heightFt" name="heightFt" placeholder="5" min="1" max="8" step="1" aria-label="Height feet" inputmode="decimal" />
+                  <span class="input-unit" aria-hidden="true">ft</span>
+                </div>
+                <div class="input-wrapper">
+                  <input type="number" id="heightIn" name="heightIn" placeholder="9" min="0" max="11" step="0.5" aria-label="Height inches" inputmode="decimal" />
+                  <span class="input-unit" aria-hidden="true">in</span>
+                </div>
+              </div>
+              <div class="field-error" id="heightError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- Weight -->
+            <div class="form-group">
+              <label class="form-label" for="weightKg" id="weightLabel">Weight</label>
+              <div class="input-row">
+                <div class="input-wrapper">
+                  <input type="number" id="weightKg" name="weightKg" placeholder="e.g. 70" min="20" max="300" step="0.1" aria-labelledby="weightLabel" aria-describedby="weightError" inputmode="decimal" />
+                  <span class="input-unit" id="weightUnit" aria-hidden="true">kg</span>
+                </div>
+              </div>
+              <div class="field-error" id="weightError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <button class="calc-btn" id="calcBtn" onclick="calculateBMI()" aria-label="Calculate BMI">
+              Calculate BMI →
+            </button>
+            <button class="reset-btn" onclick="resetCalc()" aria-label="Reset calculator">
+              Reset
+            </button>
+          </div><!-- /calc-card -->
+
+          <!-- Result Panel -->
+          <div class="result-panel" id="resultPanel" aria-live="polite" aria-atomic="true">
+            <!-- Placeholder -->
+            <div class="result-placeholder" id="resultPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              <p>Enter your height and weight, then click <strong>Calculate BMI</strong> to see your result here.</p>
+            </div>
+            <!-- Result -->
+            <div class="result-display" id="resultDisplay" aria-label="BMI Result">
+              <div class="bmi-score-wrap">
+                <div class="bmi-number" id="bmiNumber" aria-label="Your BMI score">—</div>
+                <span class="bmi-label" id="bmiCategoryLabel" aria-label="BMI category">—</span>
+              </div>
+              <div class="bmi-gauge" aria-hidden="true">
+                <div class="gauge-track" role="presentation">
+                  <div class="gauge-needle" id="gaugeNeedle"></div>
+                </div>
+                <div class="gauge-labels">
+                  <span>Underweight</span>
+                  <span>Normal</span>
+                  <span>Overweight</span>
+                  <span>Obese</span>
+                </div>
+              </div>
+              <div class="result-details">
+                <div class="result-chip">
+                  <div class="chip-label">Your BMI</div>
+                  <div class="chip-val" id="chipBMI">—</div>
+                </div>
+                <div class="result-chip">
+                  <div class="chip-label">Category</div>
+                  <div class="chip-val" id="chipCategory">—</div>
+                </div>
+                <div class="result-chip">
+                  <div class="chip-label">Healthy Range</div>
+                  <div class="chip-val">18.5 – 24.9</div>
+                </div>
+                <div class="result-chip">
+                  <div class="chip-label">Status</div>
+                  <div class="chip-val" id="chipStatus">—</div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /result-panel -->
+        </div><!-- /calc-wrapper -->
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT IS BMI
+    ============================================================ -->
+    <section class="section section--alt" id="what-is-bmi" aria-labelledby="what-heading">
+      <div class="container">
+        <div class="what-grid">
+          <div class="what-text">
+            <h2 id="what-heading">What is Body Mass Index (BMI)?</h2>
+            <p>
+              Body Mass Index (BMI) is a simple numerical measure that uses a person's height and
+              weight to estimate body fat and screen for potential weight-related health risks.
+              First developed by Belgian mathematician Adolphe Quetelet in the 19th century,
+              it remains one of the most widely used tools in public health and clinical practice.
+            </p>
+            <p>
+              While BMI does not directly measure body fat percentage, it provides a quick,
+              cost-free screening tool that healthcare professionals use alongside other assessments
+              to evaluate an individual's overall health status.
+            </p>
+
+            <div class="formula-box" aria-labelledby="formula-heading">
+              <h3 id="formula-heading">BMI Formula Explanation</h3>
+              <div class="formula" aria-label="Metric BMI formula">BMI = weight (kg) ÷ height² (m²)</div>
+              <br>
+              <div class="formula" aria-label="Imperial BMI formula">BMI = (weight (lbs) × 703) ÷ height² (in²)</div>
+              <p class="formula-note" style="margin-top:.65rem;">
+                <strong>Example (metric):</strong> A person weighing 70 kg and 1.75 m tall:
+                BMI = 70 ÷ (1.75 × 1.75) = <strong>22.9</strong> → Normal weight.
+              </p>
+            </div>
+          </div>
+
+          <div class="what-visual" aria-hidden="true">
+            <h3>Quick BMI Reference</h3>
+            <div class="mini-stat"><strong>&lt; 18.5</strong><span>Underweight — may need nutritional support</span></div>
+            <div class="mini-stat"><strong>18.5 – 24.9</strong><span>Normal weight — healthy range</span></div>
+            <div class="mini-stat"><strong>25 – 29.9</strong><span>Overweight — modest health risk</span></div>
+            <div class="mini-stat"><strong>≥ 30</strong><span>Obese — higher health risk</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BMI CATEGORIES TABLE
+    ============================================================ -->
+    <section class="section" id="bmi-table" aria-labelledby="table-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="table-heading">BMI Categories Table</h2>
+          <p>WHO standard BMI classification for adults aged 18 and over.</p>
+        </div>
+        <div class="table-wrapper">
+          <table aria-label="BMI categories and health risk levels">
+            <thead>
+              <tr>
+                <th scope="col">BMI Range</th>
+                <th scope="col">Category</th>
+                <th scope="col">Health Risk</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>&lt; 18.5</strong></td>
+                <td>
+                  <span class="cat-badge">
+                    <span class="cat-dot" style="background:var(--clr-under)"></span>
+                    Underweight
+                  </span>
+                </td>
+                <td>Moderate</td>
+                <td>Consult a dietitian for weight gain advice</td>
+              </tr>
+              <tr>
+                <td><strong>18.5 – 24.9</strong></td>
+                <td>
+                  <span class="cat-badge">
+                    <span class="cat-dot" style="background:var(--clr-normal)"></span>
+                    Normal Weight
+                  </span>
+                </td>
+                <td>Low</td>
+                <td>Maintain a balanced diet and active lifestyle</td>
+              </tr>
+              <tr>
+                <td><strong>25.0 – 29.9</strong></td>
+                <td>
+                  <span class="cat-badge">
+                    <span class="cat-dot" style="background:var(--clr-over)"></span>
+                    Overweight
+                  </span>
+                </td>
+                <td>Increased</td>
+                <td>Improve diet and increase physical activity</td>
+              </tr>
+              <tr>
+                <td><strong>30.0 – 34.9</strong></td>
+                <td>
+                  <span class="cat-badge">
+                    <span class="cat-dot" style="background:var(--clr-obese)"></span>
+                    Obese (Class I)
+                  </span>
+                </td>
+                <td>High</td>
+                <td>Seek medical advice on weight management</td>
+              </tr>
+              <tr>
+                <td><strong>35.0 – 39.9</strong></td>
+                <td>
+                  <span class="cat-badge">
+                    <span class="cat-dot" style="background:var(--clr-obese)"></span>
+                    Obese (Class II)
+                  </span>
+                </td>
+                <td>Very High</td>
+                <td>Medical supervision strongly recommended</td>
+              </tr>
+              <tr>
+                <td><strong>≥ 40.0</strong></td>
+                <td>
+                  <span class="cat-badge">
+                    <span class="cat-dot" style="background:#7b0000)"></span>
+                    Obese (Class III)
+                  </span>
+                </td>
+                <td>Extremely High</td>
+                <td>Urgent medical intervention may be needed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BENEFITS
+    ============================================================ -->
+    <section class="section section--alt" id="benefits" aria-labelledby="benefits-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="benefits-heading">Benefits of Using a BMI Calculator</h2>
+          <p>Why tracking your BMI matters for long-term health awareness.</p>
+        </div>
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Quick Health Screening</h3>
+            <p>BMI offers an immediate, free snapshot of whether your weight falls within a healthy range for your height — no labs or equipment needed.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Track Progress Over Time</h3>
+            <p>Regular BMI checks help you monitor weight management efforts, keeping you accountable during fitness or dietary programs.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Widely Recognised Standard</h3>
+            <p>BMI is used by the WHO, CDC, and healthcare systems worldwide, making it easy to discuss your results with medical professionals.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>Disease Risk Awareness</h3>
+            <p>Higher BMI values are associated with increased risk of type 2 diabetes, heart disease, high blood pressure, and certain cancers.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3>Goal Setting Made Easy</h3>
+            <p>Knowing your current BMI category helps you set realistic, evidence-based health and weight goals with clear target ranges.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Completely Free &amp; Accessible</h3>
+            <p>No apps, no subscriptions, no equipment. Our online BMI calculator is available to anyone, anywhere, at any time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQs
+    ============================================================ -->
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+          <p>Everything you need to know about Body Mass Index.</p>
+        </div>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+              What is a normal BMI range?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" role="region"><div class="faq-a-inner">A normal BMI range is between <strong>18.5 and 24.9</strong>. This range is associated with the lowest risk of weight-related health complications for most adults. Values below 18.5 indicate underweight, 25–29.9 is overweight, and 30 or above is classified as obese according to WHO guidelines.</div></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+              How is BMI calculated?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" role="region"><div class="faq-a-inner">BMI uses the formula: <strong>BMI = weight (kg) ÷ height² (m²)</strong>. For imperial measurements: <strong>BMI = (weight in lbs × 703) ÷ height² (in²)</strong>. For example, a person weighing 70 kg and standing 1.75 m tall would have a BMI of 70 ÷ (1.75 × 1.75) = 22.9.</div></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+              Is BMI accurate for everyone?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" role="region"><div class="faq-a-inner">BMI is a useful general screening tool, but it has limitations. It may overestimate body fat in athletes and very muscular individuals, and underestimate it in older adults or those with low muscle mass. It also doesn't account for fat distribution. For a comprehensive health assessment, always consult a qualified healthcare professional.</div></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+              What BMI is considered obese?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" role="region"><div class="faq-a-inner">A BMI of <strong>30 or above</strong> is classified as obese. There are three severity classes: <strong>Class I</strong> (30–34.9) — increased health risk; <strong>Class II</strong> (35–39.9) — high risk; <strong>Class III / Morbid Obesity</strong> (40+) — very high risk. Obesity is associated with higher rates of cardiovascular disease, type 2 diabetes, sleep apnea, and certain cancers.</div></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+              Can I use this BMI calculator for children?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" role="region"><div class="faq-a-inner">This calculator is designed for <strong>adults aged 18 and older</strong>. BMI interpretation for children and teenagers is different — it uses age- and sex-specific percentiles rather than fixed cut-off points. For paediatric BMI assessment, please consult a paediatrician or use a specialised child BMI tool.</div></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+              How often should I check my BMI?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" role="region"><div class="faq-a-inner">For most adults, checking BMI <strong>every 1–3 months</strong> is sufficient for general health monitoring. If you are actively managing your weight through a diet or exercise programme, monthly checks can help track progress. Remember to use BMI alongside other indicators such as waist circumference, blood pressure, and regular physical activity for a complete picture of your health.</div></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#" class="logo" aria-label="BMI Calculator Home">
+            <div class="logo-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            BMI<span style="color:var(--clr-accent)">Calc</span>
+          </a>
+          <p>Free, accurate Body Mass Index calculator for adults. Built with WHO standards. No sign-up required.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#calculator">BMI Calculator</a></li>
+            <li><a href="#what-is-bmi">What is BMI?</a></li>
+            <li><a href="#bmi-table">BMI Table</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#faq">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Disclaimer</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Medical Disclaimer</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 BMICalc Online. All rights reserved.</span>
+        <span>This tool is for informational purposes only and does not constitute medical advice. Consult a healthcare professional for personalised guidance.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ============================================================
+       STATE
+    ============================================================ */
+    let currentUnit = 'metric';
+
+    /* ============================================================
+       UNIT TOGGLE
+    ============================================================ */
+    function setUnit(unit) {
+      currentUnit = unit;
+      const isImperial = unit === 'imperial';
+
+      document.getElementById('metricBtn').classList.toggle('active', !isImperial);
+      document.getElementById('imperialBtn').classList.toggle('active', isImperial);
+      document.getElementById('metricBtn').setAttribute('aria-pressed', String(!isImperial));
+      document.getElementById('imperialBtn').setAttribute('aria-pressed', String(isImperial));
+
+      document.getElementById('metricHeightRow').style.display = isImperial ? 'none' : 'flex';
+      document.getElementById('imperialHeightRow').style.display = isImperial ? 'flex' : 'none';
+
+      document.getElementById('weightUnit').textContent = isImperial ? 'lbs' : 'kg';
+      document.getElementById('weightKg').placeholder = isImperial ? 'e.g. 154' : 'e.g. 70';
+
+      clearErrors();
+      resetResult();
+    }
+
+    /* ============================================================
+       VALIDATION
+    ============================================================ */
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      el.textContent = msg;
+      el.classList.add('visible');
+    }
+    function clearErrors() {
+      ['heightError', 'weightError'].forEach(id => {
+        const el = document.getElementById(id);
+        el.textContent = '';
+        el.classList.remove('visible');
+      });
+      ['heightCm','heightFt','heightIn','weightKg'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('error');
+      });
+    }
+
+    function validateInputs() {
+      clearErrors();
+      let valid = true;
+
+      if (currentUnit === 'metric') {
+        const hCm = parseFloat(document.getElementById('heightCm').value);
+        if (!document.getElementById('heightCm').value || isNaN(hCm) || hCm < 50 || hCm > 250) {
+          showError('heightError', 'Please enter a valid height between 50 cm and 250 cm.');
+          document.getElementById('heightCm').classList.add('error');
+          valid = false;
+        }
+      } else {
+        const hFt = parseFloat(document.getElementById('heightFt').value);
+        const hIn = parseFloat(document.getElementById('heightIn').value || 0);
+        if (!document.getElementById('heightFt').value || isNaN(hFt) || hFt < 1 || hFt > 8) {
+          showError('heightError', 'Please enter valid feet (1–8) and inches (0–11).');
+          document.getElementById('heightFt').classList.add('error');
+          valid = false;
+        } else if (isNaN(hIn) || hIn < 0 || hIn > 11) {
+          showError('heightError', 'Inches must be between 0 and 11.');
+          document.getElementById('heightIn').classList.add('error');
+          valid = false;
+        }
+      }
+
+      const w = parseFloat(document.getElementById('weightKg').value);
+      const [wMin, wMax] = currentUnit === 'imperial' ? [44, 660] : [20, 300];
+      if (!document.getElementById('weightKg').value || isNaN(w) || w < wMin || w > wMax) {
+        showError('weightError', `Please enter a valid weight (${wMin}–${wMax} ${currentUnit === 'imperial' ? 'lbs' : 'kg'}).`);
+        document.getElementById('weightKg').classList.add('error');
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    /* ============================================================
+       CALCULATE BMI
+    ============================================================ */
+    function calculateBMI() {
+      if (!validateInputs()) return;
+
+      let heightM, weightKg;
+
+      if (currentUnit === 'metric') {
+        const hCm = parseFloat(document.getElementById('heightCm').value);
+        heightM = hCm / 100;
+        weightKg = parseFloat(document.getElementById('weightKg').value);
+      } else {
+        const hFt = parseFloat(document.getElementById('heightFt').value);
+        const hIn = parseFloat(document.getElementById('heightIn').value || 0);
+        const totalInches = (hFt * 12) + hIn;
+        heightM = totalInches * 0.0254;
+        const lbs = parseFloat(document.getElementById('weightKg').value);
+        weightKg = lbs * 0.453592;
+      }
+
+      const bmi = weightKg / (heightM * heightM);
+      displayResult(bmi);
+    }
+
+    /* ============================================================
+       DISPLAY RESULT
+    ============================================================ */
+    function displayResult(bmi) {
+      const rounded = Math.round(bmi * 10) / 10;
+
+      let category, color, status;
+      if (bmi < 18.5) {
+        category = 'Underweight'; color = '#3b9edd'; status = '⬇ Below healthy range';
+      } else if (bmi < 25) {
+        category = 'Normal Weight'; color = '#27ae60'; status = '✓ Within healthy range';
+      } else if (bmi < 30) {
+        category = 'Overweight'; color = '#f39c12'; status = '⬆ Above healthy range';
+      } else {
+        category = 'Obese'; color = '#e74c3c'; status = '⚠ Significantly above range';
+      }
+
+      // Show values
+      document.getElementById('bmiNumber').textContent = rounded.toFixed(1);
+      document.getElementById('bmiNumber').style.color = color;
+      document.getElementById('bmiCategoryLabel').textContent = category;
+      document.getElementById('bmiCategoryLabel').style.background = color;
+      document.getElementById('chipBMI').textContent = rounded.toFixed(1);
+      document.getElementById('chipCategory').textContent = category;
+      document.getElementById('chipStatus').textContent = status;
+
+      // Gauge needle: BMI 10–40 range mapped to 0–100%
+      const gaugeMin = 10, gaugeMax = 40;
+      const pct = Math.min(100, Math.max(0, ((bmi - gaugeMin) / (gaugeMax - gaugeMin)) * 100));
+      document.getElementById('gaugeNeedle').style.left = pct + '%';
+
+      // Toggle visibility
+      document.getElementById('resultPlaceholder').classList.add('hidden');
+      document.getElementById('resultDisplay').classList.add('visible');
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    function resetCalc() {
+      ['heightCm','heightFt','heightIn','weightKg'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      clearErrors();
+      resetResult();
+    }
+    function resetResult() {
+      document.getElementById('resultPlaceholder').classList.remove('hidden');
+      document.getElementById('resultDisplay').classList.remove('visible');
+    }
+
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all others
+      document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(b => {
+        if (b !== btn) {
+          b.setAttribute('aria-expanded', 'false');
+          b.nextElementSibling.classList.remove('open');
+        }
+      });
+
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      answer.classList.toggle('open', !isOpen);
+    }
+
+    /* ============================================================
+       MOBILE NAV TOGGLE
+    ============================================================ */
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      siteNav.classList.toggle('open');
+    });
+    // Close nav on link click (mobile)
+    siteNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ============================================================
+       KEYBOARD: Enter key on inputs triggers calculate
+    ============================================================ */
+    ['heightCm','heightFt','heightIn','weightKg'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') calculateBMI(); });
+    });
+  </script>
+
+</body>
+</html>
